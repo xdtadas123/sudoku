@@ -3,111 +3,131 @@
 <head>
   <meta charset="utf-8">
   <title>Sudoku</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-<h1>Sudoku</h1>
+<main class="sudoku-app">
 
-<hr>
+  <header class="app-header">
+    <h1>Sudoku</h1>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Perjungti temą">
+      🌙
+    </button>
+  </header>
 
-<h2>Settings</h2>
-<form>
-    <label for="difficulty">Difficulty:</label>
-    <select id="difficulty" name="difficulty">
+  <hr>
+
+  <section aria-labelledby="settings-title">
+    <h2 id="settings-title">Settings</h2>
+    <form class="settings-form">
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty" name="difficulty">
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
         <option value="expert">Expert</option>
-    </select>
+      </select>
 
-    &nbsp;&nbsp;
+      <span class="settings-spacer"></span>
 
-    <label for="board-size">Board:</label>
-    <select id="board-size" name="board-size">
+      <label for="board-size">Board:</label>
+      <select id="board-size" name="board-size">
         <option value="2" hidden>2 x (3x3)</option>
         <option value="3" selected>3 x (3x3)</option>
         <option value="4" hidden>4 x (3x3)</option>
-    </select>
+      </select>
 
-    &nbsp;&nbsp;
+      <span class="settings-spacer"></span>
 
-    <button type="button" id="new-game">New game</button>
-    <button type="button" id="hint">Hint</button>
-    <button type="button" id="check">Check</button>
-    <button type="button" id="solve">Solve</button>
-</form>
+      <button type="button" id="new-game">New game</button>
+      <button type="button" id="hint">Hint</button>
+      <button type="button" id="check">Check</button>
+      <button type="button" id="solve">Solve</button>
+    </form>
+  </section>
 
-<hr>
+  <hr>
 
-<h2>Score / Stats</h2>
-<ul>
-    <li>Time: <span id="time">00:00</span></li>
-    <li>Mistakes: <span id="mistakes">0</span></li>
-    <li>Empty cells: <span id="empty-cells">81</span></li>
-    <li>Last hint: <span id="last-hint">–</span></li>
-</ul>
+  <section aria-labelledby="stats-title">
+    <h2 id="stats-title">Score / Stats</h2>
+    <ul class="stats-list">
+      <li>Time: <span id="time">00:00</span></li>
+      <li>Mistakes: <span id="mistakes">0</span></li>
+      <li>Empty cells: <span id="empty-cells">81</span></li>
+      <li>Last hint: <span id="last-hint">–</span></li>
+    </ul>
+  </section>
 
-<hr>
+  <hr>
 
-<h2>Sudoku board</h2>
+  <section aria-labelledby="board-title">
+    <h2 id="board-title">Sudoku board</h2>
 
-<!-- Outer white area (70% width). Inside will be the 9x9 grid. -->
-<table width="70%" bgcolor="white" align="center" border="1" cellpadding="5" cellspacing="0">
-    <tr>
-        <td>
-            <!-- 9x9 grid placeholder -->
-            <table border="1" cellpadding="8" cellspacing="0" width="100%">
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+    <div class="board-shell">
+      <table class="sudoku-grid" aria-label="Sudoku puzzle">
+        <tbody>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-<hr>
+  <section class="illustration-section" aria-hidden="true">
+    <figure class="illustration-figure">
+      <img src="123.webp" alt="" loading="lazy">
+    </figure>
+  </section>
+
+  <hr>
+
+</main>
+
 </body>
 </html>

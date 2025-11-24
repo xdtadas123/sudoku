@@ -1,1 +1,4 @@
 # sudoku
+
+
+``` JEI TURITE IDĖJŲ SPAMINKIT ISSUES ```

@@ -312,7 +312,7 @@ body[data-theme="dark"] .board-shell::after {
 }
 
 .board-section {
-  flex: 0 0 850px;
+  flex: 0 0 750px;
 }
 
 .stats-section {

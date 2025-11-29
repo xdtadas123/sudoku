@@ -12,10 +12,12 @@
 <body>
   <main class="sudoku-app">
     <header class="app-header">
-      <h1>Sudoku</h1>
+      <h1><a href="index.html">Sudoku</a></h1>
       <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Perjungti temą">🌙</button>
     </header>
+
     <hr>
+
     <section aria-labelledby="settings-title">
       <form class="settings-form">
         <label for="difficulty">Difficulty:</label>
@@ -41,8 +43,8 @@
     </section>
     <section class="play-section">
       <aside class="leaderboard" aria-labelledby="leaderboard-title">
-        <a href="pvp.html" class="arena-medal-btn" aria-label="PvP Arena">
-          <img src="medal.png" alt="PvP Arena medal">
+        <a class="arena-medal-btn">
+          <img src="images/medal.png" alt="PvP Arena medal">
         </a>
         <h2 id="leaderboard-title">Leaderboard for <span id="leaderboard-difficulty">Easy</span></h2>
         <div class="leaderboard-body">
@@ -82,10 +84,11 @@
         </ul>
       </section>
     </section>
+
     <hr>
 
     <a href="about.html" class="about-badge" id="about-btn">
-      <img src="man.png" alt="Apie šį Sudoku">
+      <img src="images/man.png" alt="Apie šį Sudoku">
     </a>
 
   </main>

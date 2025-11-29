@@ -1,6 +1,31 @@
+/*
+MODULES TO EXTRACT NOW:
+
+1. theme.js – light/dark theme, data-theme, localStorage, toggle button (except on about).
+2. navigation.js – show/hide .about-badge and .about-back depending on the page.
+3. settings-ui.js – difficulty, leaderboard-difficulty, board-size, buildBoard function.
+
+MODULES PLANNED FOR LATER:
+
+5. sudoku-core.js – board model, generator, solver, validation, hint algorithm.
+6. sudoku-ui.js – cells DOM, input handling, New/Hint/Check/Solve buttons, highlights.
+7. stats.js – time, mistakes, empty cells, last hint, updating these values.
+8. leaderboard.js – highscore data and <ol> generation/updating.
+*/
+
+
+// MOSTLY TEMP STUFF FOR DISPLAYING THE CONCEPT:
+
+
+
+// Initialization and page type detection
 document.addEventListener("DOMContentLoaded", function () {
+  const path = window.location.pathname;
+  const isAboutPage = /about\.html?$/i.test(path);
   const toggle = document.getElementById("theme-toggle");
 
+
+  // Theme (dark/light) logic
   function applyTheme(theme) {
     document.body.dataset.theme = theme;
     if (toggle) {
@@ -8,24 +33,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  const stored = localStorage.getItem("sudoku-theme");
-  if (stored === "light" || stored === "dark") {
-    applyTheme(stored);
+  if (isAboutPage) {
+    applyTheme("light");
   } else {
-    const prefersDark =
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(prefersDark ? "dark" : "light");
+    const stored = localStorage.getItem("sudoku-theme");
+    if (stored === "light" || stored === "dark") {
+      applyTheme(stored);
+    } else {
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(prefersDark ? "dark" : "light");
+    }
+
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        const current = document.body.dataset.theme === "dark" ? "dark" : "light";
+        const next = current === "dark" ? "light" : "dark";
+        applyTheme(next);
+        localStorage.setItem("sudoku-theme", next);
+      });
+    }
   }
 
-  if (toggle) {
-    toggle.addEventListener("click", function () {
-      const current = document.body.dataset.theme === "dark" ? "dark" : "light";
-      const next = current === "dark" ? "light" : "dark";
-      applyTheme(next);
-      localStorage.setItem("sudoku-theme", next);
-    });
-  }
 
+  //Difficulty selection and leaderboard label
   const difficultySelect = document.getElementById("difficulty");
   const leaderboardDifficulty = document.getElementById("leaderboard-difficulty");
 
@@ -40,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     difficultySelect.addEventListener("change", updateLeaderboardLabel);
   }
 
+  //Sudoku board generation based on size
   const boardSizeSelect = document.getElementById("board-size");
   const sudokuBody = document.getElementById("sudoku-body");
 
@@ -51,10 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const grid = document.querySelector(".sudoku-grid");
     const blockSize = 3;
     const n = blockCount * blockSize;
-
-    if (grid) {
-      grid.dataset.blockSize = String(blockSize);
-    }
 
     for (let r = 0; r < n; r++) {
       const tr = document.createElement("tr");
@@ -79,12 +107,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+
+  //Navigation buttons between index and about pages
   const navButtons = document.querySelectorAll(".about-badge, .about-back");
 
   if (navButtons.length > 0) {
-    const path = window.location.pathname;
-    const isAboutPage = /about\.html?$/i.test(path);
-
     navButtons.forEach((btn) => {
       const href = btn.getAttribute("href") || "";
       const isAboutLink = /about\.html?$/i.test(href);

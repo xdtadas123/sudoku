@@ -2,32 +2,138 @@
 <html lang="lt">
 
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-    <meta charset="utf-8">
-    <title>About</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body class="about-page">
-    <main>
-        <header class="app-header">
-        </header>
-        <hr>
-        <section aria-labelledby="about-title" class="about-section">
-            <p>Sudoku is a logic-based number puzzle in which the board is divided into rows, columns, and small
-                squares. Each row, column, and square must contain all the numbers from 1 to 9 without repeating.</p>
-            <p>This version lets you choose different difficulty levels, tracks time, mistakes, and empty cells. The
-                goal is to fill the board using logic rather than guessing.</p>
-            <p>Regularly solving Sudoku improves concentration, memory, and the ability to notice patterns. It is a calm
-                yet engaging workout for the brain.</p>
-        </section>
-        <hr>
-        <a href="index.html" class="about-back">
-            <img src="back.png" alt="Grįžti į Sudoku">
-        </a>
-    </main>
+  <main class="sudoku-app">
+    <header class="app-header">
+      <h1><a href="index.html">Sudoku</a></h1>
+    </header>
+    <hr>
+
+    <section class="about-section">
+
+      <article class="about-block">
+        <div class="about-text">
+          <h2>Magic Squares</h2>
+          <p>The long and interesting history of Sudoku is quite a puzzle in itself. Sudoku has deep roots in
+            ancient number puzzles. For many centuries people have been interested in creating and solving them.
+            Puzzles continue to stimulate new development in mathematics.</p>
+          <p>Magic Square puzzles involve ordering consecutive numbers into a square. All rows, columns and
+            diagonals must add up to the same number, and each number can only be used once. Solutions were
+            thought to have mystical properties and became part of the Chinese <em>I Ching</em> method of telling
+            the future.</p>
+          <p>The 3×3 solution called the <em>Lo Shu diagram</em> was regarded as a gift from a turtle emerging
+            from the River Lo. The idea travelled from China, through Arabic mathematicians, and eventually
+            reached Europe.</p>
+        </div>
+      </article>
+
+      <hr class="topic-divider topic-euler">
+
+      <article class="about-block about-alt">
+        <div class="about-text">
+          <h2>Chinese Puzzle</h2>
+          <p>The Chinese Puzzle consists of a 3×3 grid with one square missing. The tiles have to be slid one at
+            a time to form an ascending sequence. Later versions use pictures instead of digits, but the idea is
+            the same: find a strategy to reorder the squares. Like Sudoku, it is about logical moves rather than
+            arithmetic.</p>
+          <p>Players quickly discover that certain moves only seem to help, while actually leading them into dead
+            ends that must be carefully undone. Because every tile movement affects the others, success depends on
+            seeing the grid as a whole rather than focusing on a single square.</p>
+        </div>
+        <figure class="about-figure">
+          <img src="images\magic3.png" alt="3x3 Lo Shu magic square">
+          <figcaption>The Lo Shu 3×3 magic square.</figcaption>
+        </figure>
+      </article>
+
+      <hr class="topic-divider topic-euler">
+
+      <article class="about-block">
+        <div class="about-text">
+          <h2>Swiss Genius</h2>
+          <p>The great mathematician <strong>Leonhard Euler</strong> is chiefly credited with creating the
+            ancestor of modern Sudoku. Born in Basel in 1707, he made huge contributions across mathematics –
+            from analysis to number theory – and even when blind in later life he continued to publish
+            important work.</p>
+          <p>Euler introduced the now-standard symbols <strong>π</strong> for the circle number and
+            <strong>i</strong> for the square root of −1. As a kind of pastime he studied arrangement puzzles
+            using letters instead of numbers.
+          </p>
+        </div>
+        <figure class="about-figure">
+          <img src="images\euler.png" alt="Portrait of Leonhard Euler">
+          <figcaption>Leonhard Euler – the mind behind Graeco-Latin squares.</figcaption>
+        </figure>
+      </article>
+
+      <hr class="topic-divider topic-modern">
+
+      <article class="about-block about-alt">
+        <figure class="about-figure">
+          <img src="images\graeco-latin.png" alt="Euler's Graeco-Latin square">
+          <figcaption>Each Latin and Greek letter appears once per row and column.</figcaption>
+        </figure>
+        <div class="about-text">
+          <h2>Graeco–Latin Squares</h2>
+          <p>Euler’s ‘Graeco-Latin squares’ – or Latin squares – remove the diagonal-sum condition of magic
+            squares and focus on permutations. The first four Greek letters α, β, γ, δ are combined with Latin
+            letters A, B, C, D so that each pair occurs once in every row and column, and often once in each
+            region as well. This structure is very close to the logic of Sudoku.</p>
+        </div>
+      </article>
+
+      <hr class="topic-divider topic-modern">
+
+      <article class="about-block">
+        <div class="about-text">
+          <h2>Journey to America</h2>
+          <p>Euler’s ideas slept for centuries. Around 1979, Howard Garns revived them as a puzzle called
+            <em>Number Place</em> in the American Dell puzzle magazines. The twist was to divide the 9×9 grid
+            into nine 3×3 regions. Every row, column and region must contain each number 1–9 exactly once – the
+            modern Sudoku rule set.
+          </p>
+          <p>Garns was a retired architect and freelance puzzle constructor from Indiana, who designed Number Place in
+            his spare time for Dell’s Pencil Puzzles and Word Games magazine.
+            The earliest known Number Place grids appeared in the May 1979 issue, and Dell has continued to use this
+            original name for the puzzle in its publications.
+          </p>
+        </div>
+        <figure class="about-figure">
+          <img src="images\sudoku-grid.png" alt="Example of Sudoku grid">
+          <figcaption>The modern 9×9 Sudoku structure.</figcaption>
+        </figure>
+      </article>
+
+      <hr class="topic-divider topic-modern">
+
+      <article class="about-block about-alt">
+        <figure class="about-figure">
+          <img src="images\japan-garden.png" alt="Japanese garden with pond and bridge">
+          <figcaption>In Japan, Sudoku became a cultural phenomenon.</figcaption>
+        </figure>
+        <div class="about-text">
+          <h2>Over the Pacific to Japan</h2>
+          <p>The puzzle crossed the Pacific to Japan, where it fit perfectly into newspapers that found
+            crosswords awkward for the Japanese writing system. The name <strong>Su Doku</strong> (数独) means
+            roughly “numbers only” or “single number”. The Japanese insisted on symmetric clue patterns and a
+            controlled difficulty level, refining the puzzle we know today.</p>
+          <p>From there Sudoku returned to the U.S. and Europe and became a worldwide craze with championships
+            and daily grids in newspapers everywhere.</p>
+        </div>
+      </article>
+
+      <hr class="topic-divider topic-characters">
+
+    </section>
+  </main>
 </body>
 
 </html>

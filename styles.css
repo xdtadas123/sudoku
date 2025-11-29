@@ -1,3 +1,4 @@
+/*===============THEMES===============*/
 :root {
   --bg: #f6efe4;
   --ink: #231814;
@@ -17,7 +18,7 @@
 body[data-theme="dark"] {
   --bg: #050814;
   --ink: #f9fafb;
-  --muted: #a8a29e;
+  --muted: #fef9e6;
   --panel: #050814;
   --panel-elevated: #020617;
   --panel-edge: #374151;
@@ -30,17 +31,8 @@ body[data-theme="dark"] {
   --ink-soft: #e5e7eb;
 }
 
-* {
-  box-sizing: border-box;
-}
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow-y: hidden;
-}
-
+/*=============BACKGROUND=============*/
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
@@ -66,21 +58,10 @@ body[data-theme="dark"] {
     var(--bg);
 }
 
-.sudoku-app {
-  top: -30px;
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 22px 16px 34px;
-}
 
-.app-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
-}
+/*==============HEADERS===============*/
 
+/* Main title */
 h1 {
   margin: 8px 0 2px;
   font-weight: 900;
@@ -89,8 +70,11 @@ h1 {
   font-size: 1.9rem;
   color: var(--ink-soft);
   position: relative;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
 
+
+/* Subtitle under the title */
 h1::after {
   content: "PLAYGROUND";
   position: absolute;
@@ -101,8 +85,10 @@ h1::after {
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
 
+/* For section labels */
 h2 {
   margin: 18px 0 6px;
   font-size: 0.85rem;
@@ -111,6 +97,7 @@ h2 {
   text-transform: uppercase;
 }
 
+/* Decorative separator line */
 hr {
   border: 0;
   height: 12px;
@@ -121,6 +108,27 @@ hr {
   border-radius: 999px;
 }
 
+/* Header layout */
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+
+/* Header title link */
+.app-header h1 a,
+.app-header h1 a:visited,
+.app-header h1 a:hover,
+.app-header h1 a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*===========THEME-TOGGLE============*/
+
+/* Toggle button */
 .theme-toggle {
   border: 1px solid var(--panel-edge);
   background: radial-gradient(circle at 0 0, #fff 0, #fffaf2 40%, #facc15 100%);
@@ -134,6 +142,7 @@ hr {
   overflow: hidden;
 }
 
+/* Soft highlight overlay inside the button */
 .theme-toggle::before {
   content: "";
   position: absolute;
@@ -143,10 +152,13 @@ hr {
   mix-blend-mode: soft-light;
 }
 
+
+/* Dark-theme background */
 body[data-theme="dark"] .theme-toggle {
   background: radial-gradient(circle at 0 0, #020617 0, #020617 40%, #111827 100%);
 }
 
+/* Hover effects */
 .theme-toggle:hover {
   transform: translateY(-1px) scale(1.02);
   box-shadow: var(--shadow-strong);
@@ -157,6 +169,9 @@ body[data-theme="dark"] .theme-toggle {
   box-shadow: 0 0 0 3px rgba(229, 101, 50, 0.6);
 }
 
+
+/*===========SETTINGS-FORM============*/
+/* Settings panel (difficulty, board, actions) */
 .settings-form {
   display: flex;
   flex-wrap: wrap;
@@ -172,6 +187,7 @@ body[data-theme="dark"] .theme-toggle {
   position: relative;
 }
 
+/* Sticky-note accents on the panel */
 .settings-form::before {
   content: "";
   position: absolute;
@@ -200,21 +216,32 @@ body[data-theme="dark"] .theme-toggle {
   opacity: 0.65;
 }
 
+/* Dark theme version of the panel and tape */
 body[data-theme="dark"] .settings-form {
   background: linear-gradient(135deg, #020617, #020617);
   border-color: var(--panel-edge);
 }
 
+body[data-theme="dark"] .settings-form::before,
+body[data-theme="dark"] .settings-form::after {
+  background: #111827;
+  border-color: #020617;
+  opacity: 0.9;
+}
+
+/* Form labels */
 label {
   font-size: 0.94rem;
   color: var(--ink-soft);
 }
 
+/* Small gap element between controls */
 .settings-spacer {
   width: 18px;
   display: inline-block;
 }
 
+/* Base style for selects and buttons */
 select,
 button {
   appearance: none;
@@ -230,6 +257,7 @@ button {
   color: var(--ink);
 }
 
+/* Custom dropdown arrow */
 select {
   background-image:
     linear-gradient(45deg, transparent 50%, var(--muted) 50%),
@@ -242,12 +270,14 @@ select {
   padding-right: 28px;
 }
 
+/* Keyboard focus ring */
 select:focus,
 button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(229, 101, 50, 0.32);
 }
 
+/* Primary button style */
 button {
   cursor: pointer;
   font-weight: 600;
@@ -255,11 +285,13 @@ button {
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
 }
 
+/* Dark theme buttons */
 body[data-theme="dark"] button {
   background: linear-gradient(135deg, #1f2933, #111827);
   text-shadow: none;
 }
 
+/* Button hover/press feedback */
 button:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-soft);
@@ -270,6 +302,7 @@ button:active {
   box-shadow: 0 2px 7px rgba(15, 23, 42, 0.45);
 }
 
+/* Border tints per action */
 #solve {
   border-color: #e56532;
 }
@@ -282,12 +315,14 @@ button:active {
   border-color: #0ea5e9;
 }
 
+/* Layout: board + leaderboard + stats row */
 .play-section {
   display: flex;
   gap: 20px;
   align-items: flex-start;
 }
 
+/* Center play area on wider screens */
 @media (min-width: 721px) {
   .play-section {
     padding-left: 320px;
@@ -296,25 +331,13 @@ button:active {
   }
 }
 
-body[data-theme="dark"] .settings-form::before,
-body[data-theme="dark"] .settings-form::after {
-  background: #111827;
-  border-color: #020617;
-  opacity: 0.9;
-}
-
-body[data-theme="dark"] .board-shell::before,
-body[data-theme="dark"] .board-shell::after {
-  background: #111827;
-  border-color: #020617;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-  opacity: 0.95;
-}
-
+/* Fixed width column for the board */
 .board-section {
   flex: 0 0 750px;
 }
 
+
+/*============SCORE-STATS=============*/
 .stats-section {
   position: fixed;
   right: 0;
@@ -367,6 +390,8 @@ body[data-theme="dark"] .stats-list li {
   color: var(--ink-soft);
 }
 
+
+/*============LEADERBOARD=============*/
 .leaderboard {
   position: fixed;
   left: 0;
@@ -434,6 +459,7 @@ body[data-theme="dark"] .leaderboard {
   color: var(--muted);
 }
 
+/*============MEDAL-BUTTON============*/
 .arena-medal-btn {
   position: absolute;
   top: -115px;
@@ -455,6 +481,7 @@ body[data-theme="dark"] .leaderboard {
   display: block;
 }
 
+/*===============BOARD===============*/
 .board-shell {
   background: linear-gradient(145deg, #fffaf2, #f4e2cd);
   margin: 16px auto 22px;
@@ -464,30 +491,8 @@ body[data-theme="dark"] .leaderboard {
   padding: 20px;
   border: 1px solid var(--panel-edge);
   position: relative;
-}
-
-.board-shell::before,
-.board-shell::after {
-  content: "";
-  position: absolute;
-  width: 82px;
-  height: 20px;
-  background: #fef3c7;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  opacity: 0.9;
-}
-
-.board-shell::before {
-  top: -10px;
-  left: 24px;
-  transform: rotate(-5deg);
-}
-
-.board-shell::after {
-  bottom: -10px;
-  right: 26px;
-  transform: rotate(4deg);
+  aspect-ratio: 1 / 1;
+  display: flex;
 }
 
 body[data-theme="dark"] .board-shell {
@@ -498,13 +503,13 @@ body[data-theme="dark"] .board-shell {
 
 .sudoku-grid {
   width: 100%;
+  height: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   background: var(--panel);
   border: 2px solid var(--grid-strong);
   border-radius: 18px;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
   box-shadow: 0 0 32px rgba(75, 54, 40, 0.6);
 }
 
@@ -564,6 +569,24 @@ body[data-theme="dark"] .sudoku-grid td:hover {
   box-shadow: inset 0 0 0 2px var(--accent), 0 0 26px rgba(229, 101, 50, 0.7);
 }
 
+.board-shell::before,
+.board-shell::after {
+  content: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sudoku-app {
+  top: 0;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px 16px 34px;
+}
+
+/*===============ABOUT-PAGE===============*/
 .about-badge,
 .about-back {
   position: fixed;
@@ -603,7 +626,7 @@ body[data-theme="dark"] .about-back {
 }
 
 .about-section {
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
   font-size: 1rem;
   line-height: 1.7;
@@ -614,14 +637,131 @@ body[data-theme="dark"] .about-back {
   margin: 0 0 10px;
 }
 
-@media (max-width: 720px) {
+body.about-page .about-section {
+  font-family: "Merriweather", serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #fef9e6;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+body.about-page .about-section h1,
+body.about-page .about-section h2 {
+  font-family: "UnifrakturCook", "Times New Roman", serif;
+  letter-spacing: 0.08em;
+}
+
+body.about-page .about-section h1,
+body.about-page .about-section h2 {
+  font-family: "UnifrakturCook", "Times New Roman", serif;
+  letter-spacing: 0.08em;
+  color: #fef9e6;
+  font-size: 1.2rem;
+}
+
+body.about-page .about-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: "UnifrakturCook", "Times New Roman", serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #fef9e6;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+body.about-page .about-section p {
+  margin: 0 0 10px;
+}
+
+body.about-page h1::after {
+  content: "HISTORY";
+}
+
+body.about-page .about-back {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.about-back {
+  width: 110px;
+}
+
+body.about-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to right,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.85) 2%,
+      transparent 20%),
+    linear-gradient(to left,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.85) 2%,
+      transparent 20%);
+  z-index: 0;
+}
+
+.about-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.about-block.about-alt {
+  flex-direction: row;
+}
+
+.about-text {
+  flex: 0 0 55%;
+  max-width: 55%;
+}
+
+.about-figure {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .about-block {
+    flex-direction: column;
+  }
+
+  .about-text,
+  .about-figure {
+    flex: none;
+    max-width: 100%;
+  }
+}
+
+.about-figure figcaption {
+  margin-top: 6px;
+  text-align: center;
+}
+
+body.about-page h1,
+body.about-page h1 a {
+  color: #fef9e6;
+}
+
+body.about-page h1::after {
+  color: #fef9e6;
+}
+
+/*=============SCREEN-OP==============*/
+@media (max-width: 1024px) {
   .play-section {
     flex-direction: column;
     padding-left: 0;
     padding-right: 0;
   }
 
-  .leaderboard,
+  .leaderboard {
+    display: none;
+  }
+
   .stats-section {
     position: static;
     transform: none;
@@ -648,10 +788,33 @@ body[data-theme="dark"] .about-back {
   .stats-list {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
+
+  .about-badge,
+  .about-back {
+    display: none !important;
+  }
+
+  .board-section {
+    flex: 0 0 auto;
+    /* nebėra 750px fiksuoto aukščio */
+  }
+
+  .board-shell {
+    margin-bottom: 0;
+    /* nuima tarpą iki stats */
+  }
+
+  .stats-section {
+    margin-top: 0;
+  }
 }
 
-body.about-page {
-  background: url("background.jpg") center center / cover fixed no-repeat;
+
+/*=============ABOUT-PAGE=============*/
+body.about-page .about-section h1,
+body.about-page .about-section h2 {
+  font-family: "UnifrakturCook", "Times New Roman", serif;
+  letter-spacing: 0.08em;
 }
 
 body.about-page .about-section {
@@ -669,7 +832,7 @@ body.about-page .about-section h2 {
 }
 
 body.about-page {
-  background: url("background.jpg") center center / cover fixed no-repeat;
+  background: url("images/background.png") center center / cover fixed no-repeat;
 }
 
 body.about-page main {
@@ -680,7 +843,6 @@ body.about-page main {
 }
 
 body.about-page .about-section {
-  max-width: 720px;
   margin: 0 auto;
   font-family: "UnifrakturCook", "Times New Roman", serif;
   font-size: 1.3rem;
@@ -693,32 +855,24 @@ body.about-page .about-section p {
   margin: 0 0 10px;
 }
 
-body.about-page h1::after {
-  content: "";
+.about-figure img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: contain;
 }
 
-body.about-page .about-back {
-  background: transparent;
-  box-shadow: none;
-  padding: 0;
+.about-figure img[src$="magic3.png"] {
+  transform: scale(0.8);
+  transform-origin: center;
 }
 
-.about-back {
-  width: 110px;
+.about-block:first-of-type {
+  display: block;
 }
 
-body.about-page::before {
-  content: "";
-  position: fixed;        /* kad uždanga dengtų visą ekraną */
-  inset: 0;
-  pointer-events: none;   /* kad nemaišytų paspaudimams */
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.75) 0%,
-    transparent 35%,
-    transparent 65%,
-    rgba(0, 0, 0, 0.75) 100%
-  );
-  z-index: 0;
+.about-block:first-of-type .about-text {
+  max-width: 100%;
+  flex: none;
+  text-align: left;
 }
-

@@ -1,19 +1,3 @@
-/*
-MODULES TO EXTRACT NOW:
-
-1. theme.js – light/dark theme, data-theme, localStorage, toggle button (except on about).
-2. navigation.js – show/hide .about-badge and .about-back depending on the page.
-3. settings-ui.js – difficulty, leaderboard-difficulty, board-size, buildBoard function.
-
-MODULES PLANNED FOR LATER:
-
-5. sudoku-core.js – board model, generator, solver, validation, hint algorithm.
-6. sudoku-ui.js – cells DOM, input handling, New/Hint/Check/Solve buttons, highlights.
-7. stats.js – time, mistakes, empty cells, last hint, updating these values.
-8. leaderboard.js – highscore data and <ol> generation/updating.
-*/
-
-
 // MOSTLY TEMP STUFF FOR DISPLAYING THE CONCEPT:
 
 
